@@ -4,7 +4,7 @@
     'category': 'accouting',
     'license': "AGPL-3",
     'summary': " ",
-    'author': 'Itech reosurces',
+    'author': 'Itech resources',
     'company': 'ItechResources',
     'depends': [
                 'sale',

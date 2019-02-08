@@ -1,5 +1,5 @@
 {
-    'name': 'Tax Payment Module',
+    'name': 'Withholding Tax on Payments',
     'version': '0.1',
     'category': 'accouting',
     'license': "AGPL-3",

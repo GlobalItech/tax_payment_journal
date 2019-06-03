@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherited Tax form -->
+    <record id="view_tax_form_withholding_tax" model="ir.ui.view">
+        <field name="name">account.tax.form.withholding.tax</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <field name="type_tax_use" position="after">
+                <field name="is_withholding_tax" />
+            </field>
+        </field>
+    </record>
+    
+    <!-- Inherited Customer invoice form -->
+    <record id="invoice_form_withholding_tax" model="ir.ui.view">
+        <field name="name">account.invoice.form.withholding.tax</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_tax_ids']" position="attributes">
+                <attribute name="domain">[('type_tax_use','=','sale'),('company_id', '=', parent.company_id),('is_withholding_tax','=',False)]</attribute>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Inherited vendor bill form -->
+    <record id="invoice_supplier_form_withholding_tax" model="ir.ui.view">
+        <field name="name">account.invoice.supplier.form.withholding.tax</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_tax_ids']" position="attributes">
+                <attribute name="domain">[('type_tax_use','=','purchase'),('company_id', '=', parent.company_id),('is_withholding_tax','=',False)]</attribute>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>
